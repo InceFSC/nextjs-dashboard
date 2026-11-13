@@ -9,7 +9,7 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 
-const sql = postgres(process.env.NEXTJS_DASHBOARD_POSTGRES_URL!, { ssl: 'require' });
+const sql = postgres(process.env.NEXTJS_DASHBOARD_POSTGRES_URL!, { ssl: 'require'});
 
 export async function fetchRevenue() {
   try {
@@ -110,7 +110,7 @@ export async function fetchFilteredInvoices(
         invoices.amount::text ILIKE ${`%${query}%`} OR
         invoices.date::text ILIKE ${`%${query}%`} OR
         invoices.status ILIKE ${`%${query}%`}
-      ORDER BY invoices.date DESC
+      ORDER BY customers.name
       LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
 
